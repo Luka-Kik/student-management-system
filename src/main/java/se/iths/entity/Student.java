@@ -1,10 +1,10 @@
 package se.iths.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+
+@Entity
 public class Student {
 
     @Id
@@ -18,9 +18,20 @@ public class Student {
     private String lastName;
 
     @NotEmpty
+    @Column(unique = true)
     private String email;
 
     private String phoneNumber;
+
+    public Student() {
+    }
+
+//    public Student(String firstName, String lastName, String email, String phoneNumber) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.phoneNumber = phoneNumber;
+//    }
 
     public String getFirstName() {
         return firstName;
@@ -52,5 +63,13 @@ public class Student {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

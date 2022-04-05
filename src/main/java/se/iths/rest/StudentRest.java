@@ -35,7 +35,7 @@ public class StudentRest {
         }
     }
 
-    @Path("read")
+    @Path("readAll")
     @GET
     public Response getAllStudents() {
         List<Student> foundStudents = studentService.getAll();
@@ -45,8 +45,14 @@ public class StudentRest {
     @Path("update")
     @PUT
     public Response updateStudent(Student student) {
-        studentService.update(student);
-        return Response.ok(student).build();
+
+        if (emailExists(studentService.getAll(), student.getEmail())) {
+            WebApplicationExceptions.sendEmailException();
+            return null;
+        } else {
+            studentService.update(student);
+            return Response.ok(student).build();
+        }
     }
 
     @Path("delete/{id}")

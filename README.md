@@ -1,2 +1,7 @@
-# Database management layer in Src/Main/Java/se/iths/service/
-# Entity class in Src/Main/Java/se/iths/entity/
+- Database management layer in Src/Main/Java/se/iths/service/
+- Entity class in Src/Main/Java/se/iths/entity/
+- Rest controller in Src/Main/Java/se/iths/rest/
+- custom exceptions in Src/Main/Java/se/iths/exceptions/
+----------
+- the list of present endpoints is found on the Payara server page on port 4848 (local server: http://localhost:4848/common/index.jsf)
+- help method in the StudentRest class that checks if an email is already present in the database (thanks to Jessica Rodriguez for the idea)
