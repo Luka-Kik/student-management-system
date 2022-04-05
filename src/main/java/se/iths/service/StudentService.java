@@ -29,4 +29,11 @@ public class StudentService {
         Student foundStudent = entityManager.find(Student.class, id);
         entityManager.remove(foundStudent);
     }
+
+    public List<Student> findByLastname(String lastName) {
+        String query = "SELECT i FROM Student i WHERE i.lastName = :lastName";
+
+        return entityManager.createQuery(query, Student.class)
+                .setParameter("lastName", lastName).getResultList();
+    }
 }
