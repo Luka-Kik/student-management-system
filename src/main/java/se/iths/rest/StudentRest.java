@@ -1,8 +1,10 @@
 package se.iths.rest;
 
 import se.iths.entity.Student;
+import se.iths.exceptions.WebApplicationExceptions;
 import se.iths.service.StudentService;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -15,11 +17,22 @@ public class StudentRest {
 
     StudentService studentService;
 
+    @Inject
+    public StudentRest(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @Path("create")
     @POST
     public Response createStudent(Student student) {
-        studentService.create(student);
-        return Response.ok(student).build();
+
+        if (emailExists(studentService.getAll(), student.getEmail())) {
+            WebApplicationExceptions.sendEmailException();
+            return null;
+        } else {
+            studentService.create(student);
+            return Response.ok(student).build();
+        }
     }
 
     @Path("read")
@@ -43,4 +56,21 @@ public class StudentRest {
         return Response.noContent().build();
     }
 
+    @Path("readbylastname")
+    @GET
+    public List<Student> findByLastname(@QueryParam("findbylastname") String lastName) {
+        return studentService.findByLastname(lastName);
+    }
+
+    public boolean emailExists(List<Student> foundStudents, String emailValue) {
+        boolean isPresent = false;
+
+        for (Student el : foundStudents) {
+            if (el.getEmail().contains(emailValue)) {
+                isPresent = true;
+                break;
+            }
+        }
+        return isPresent;
+    }
 }
