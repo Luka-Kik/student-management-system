@@ -2,6 +2,7 @@ package se.iths.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @Entity
 public class Teacher {
@@ -20,7 +21,15 @@ public class Teacher {
     @Column(unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "teacher")
+    private Set<Subject> subjects;
+
     public Teacher() {
+    }
+
+    public void addSubject(Subject subject) {
+        subjects.add(subject);
+        subject.setTeacher(this);
     }
 
     public Long getId() {
@@ -53,5 +62,13 @@ public class Teacher {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
 }

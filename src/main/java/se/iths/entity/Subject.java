@@ -2,6 +2,7 @@ package se.iths.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Set;
 
 @Entity
 public class Subject {
@@ -12,6 +13,12 @@ public class Subject {
 
     @NotEmpty
     private String name;
+
+    @ManyToOne
+    private Teacher teacher;
+
+    @ManyToMany(mappedBy = "subjects")
+    private Set<Student> students;
 
     public Subject() {
     }
@@ -30,5 +37,21 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 }

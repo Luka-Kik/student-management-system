@@ -2,7 +2,7 @@ package se.iths.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -22,6 +22,9 @@ public class Student {
     private String email;
 
     private String phoneNumber;
+
+    @ManyToMany
+    private Set<Subject> subjects;
 
     public Student() {
     }
@@ -64,5 +67,9 @@ public class Student {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
 }
