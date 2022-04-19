@@ -3,9 +3,8 @@ package se.iths.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-
 @Entity
-public class Student {
+public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,9 +20,7 @@ public class Student {
     @Column(unique = true)
     private String email;
 
-    private String phoneNumber;
-
-    public Student() {
+    public Teacher() {
     }
 
     public Long getId() {
@@ -56,13 +53,5 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }
