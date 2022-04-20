@@ -1,5 +1,6 @@
 package se.iths.service;
 
+import se.iths.entity.Student;
 import se.iths.entity.Subject;
 
 import javax.persistence.EntityManager;
@@ -35,5 +36,9 @@ public class SubjectService {
 
         return entityManager.createQuery(query, Subject.class)
                 .setParameter("name", name).getResultList();
+    }
+
+    public Subject findById(Long id) {
+        return entityManager.find(Subject.class, id);
     }
 }

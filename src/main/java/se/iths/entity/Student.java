@@ -28,6 +28,10 @@ public class Student {
 
     public Student() {
     }
+    public void addSubject(Subject subject){
+        subjects.add(subject);
+        subject.addStudent(this);
+    }
 
     public Long getId() {
         return id;
@@ -67,6 +71,10 @@ public class Student {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
     }
 
     public void setSubjects(Set<Subject> subjects) {
