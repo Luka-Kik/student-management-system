@@ -23,6 +23,15 @@ public class Subject {
     public Subject() {
     }
 
+    public Subject(String name, Set<Student> students) {
+        this.name = name;
+        this.students = students;
+    }
+
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,11 +56,7 @@ public class Subject {
         this.teacher = teacher;
     }
 
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
+//    public Set<Student> getStudents() {
+//        return students;
+//    }
 }

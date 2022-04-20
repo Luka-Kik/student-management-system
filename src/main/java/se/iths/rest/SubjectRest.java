@@ -68,6 +68,11 @@ public class SubjectRest {
         return subjectService.findByName(name);
     }
 
+    public Subject findById(Long id) {
+        return subjectService.findById(id);
+    }
+
+
     public boolean nameExists(List<Subject> foundSubjects, String nameValue) {
         boolean isPresent = false;
 
