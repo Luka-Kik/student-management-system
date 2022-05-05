@@ -55,8 +55,4 @@ public class Subject {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-
-//    public Set<Student> getStudents() {
-//        return students;
-//    }
 }

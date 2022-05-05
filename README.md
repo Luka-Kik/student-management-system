@@ -12,3 +12,6 @@ _Update 19.4.2022._
 - HttpError message now sends a JSON
 - Added Subject to Student method in Student REST
 - Thanks to https://github.com/JesRod-1234/ for the inspiration
+
+Update 6.5.2022.
+- Fixed error messages, now in Json, with description and timestamp.
