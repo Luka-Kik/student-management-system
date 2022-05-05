@@ -29,9 +29,12 @@ public class WebApplicationExceptions {
     }
 
     public static void sendJsonException(String name) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
         throw new javax.ws.rs.WebApplicationException(Response
                 .status(Response.Status.NOT_ACCEPTABLE)
-                //.entity(new ErrorMessage("The name '" + name + "' exists already!"))
+                .entity(new ErrorMessage("The name " + name + " exists already!", LocalDateTime.now().format(formatter)))
                 .type(MediaType.APPLICATION_JSON).build());
     }
 }
