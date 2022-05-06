@@ -1,8 +1,5 @@
 package se.iths.exceptions;
 
-import se.iths.entity.Student;
-
-import javax.json.bind.annotation.JsonbDateFormat;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.time.LocalDateTime;
